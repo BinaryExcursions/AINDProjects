@@ -24,6 +24,7 @@ class CSudokuBoard:
     def eliminate(self, board):
         self.eliminateViaBox(board)
 
+
     def displayBoard(self, values):
         """
         Display the values as a 2-D grid.
@@ -40,6 +41,7 @@ class CSudokuBoard:
                 print(line)
         return
 
+
     def grid_values(self, solutionString):
         if (len(solutionString) != self.BOARD_DIM ** 2):
             return None
@@ -55,61 +57,66 @@ class CSudokuBoard:
 
         return self._theBoard
 
-    def getMyBox(self, boardSquare):
-        for box in self._squareUnits:
-            if (boardSquare in box):
-                return box
-
-        return None
 
     def eliminateViaBox(self, board):
         for boxIndex in range(self.BOARD_DIM):
-            currBoxKey = self._squareUnits[boxIndex][0]  # 'A1'
-            currBox = self._squareUnits[boxIndex] #self.getMyBox(currBoxKey)
+            currBox = self._squareUnits[boxIndex]
 
             for key in currBox:
-                if (len(self._theBoard[key]) == 1):
-                    self.removeValueOptionFromEntireBox(currBox, self._theBoard[key])
+                if(len(self._theBoard[key]) != 1) :
+                    continue
+
+                rowIndex = key[0]
+                colIndex = int(key[1]) -1
+
+                self.removeValueOptionFromEntireBox(currBox, self._theBoard[key])
+
+                #Our Row index is a letter: 'A' - 'I'
+                self.removeValueOptionFromEntireRow(rowIndex, self._theBoard[key])
+                self.removeValueOptionFromEntireCol(colIndex, self._theBoard[key])
+
 
     def removeValueOptionFromEntireBox(self, theBox, numValue):
         for key in theBox:
             if(len(self._theBoard[key]) <= 1):
                 continue
 
-            colIndex = self._theBoard[key][1]#Get the 2nd char - which will be an int
-            rowIndex = self.characterToRowNumber(self._theBoard[key][0])# Get the 1st character - upper case letter
-
-            self.removeValueOptionFromEntireRow(rowIndex)
             self._theBoard[key] = self._theBoard[key].replace(numValue, "")
 
-    def removeValueOptionFromEntireRow(self, rowIndex):
 
+    def removeValueOptionFromEntireRow(self, rowIndex, numValue):
         for index in range(self.BOARD_DIM):
-            pass
+            dictKey = rowIndex + str(index + 1)
+            if(len(self._theBoard[dictKey]) > 1) :
+                self._theBoard[dictKey] = self._theBoard[dictKey].replace(numValue, "")
 
-        pass
 
-    def removeValueOptionFromEntireCol(self, colIndex):
-        pass
+    #ColIndex comes in as a 0th index value
+    def removeValueOptionFromEntireCol(self, colIndex, numValue):
+        for index in range(self.BOARD_DIM):
+            dictKey = self.characterForRowNumber(index) + str(colIndex + 1)
+            if (len(self._theBoard[dictKey]) > 1):
+                self._theBoard[dictKey] = self._theBoard[dictKey].replace(numValue, "")
 
-    def characterToRowNumber(self, charRow):
-        if(charRow == 'A'):
-            return 0
-        elif(charRow == 'B'):
-            return 1
-        elif(charRow == 'C'):
-            return 2
-        elif(charRow == 'D'):
-            return 3
-        elif(charRow == 'E'):
-            return 4
-        elif(charRow == 'F'):
-            return 5
-        elif(charRow == 'G'):
-            return 6
-        elif(charRow == 'H'):
-            return 7
-        elif(charRow == 'I'):
-            return 8
+
+    def characterForRowNumber(self, charRow):
+        if(charRow == 0):
+            return 'A'
+        elif(charRow == 1):
+            return 'B'
+        elif(charRow == 2):
+            return 'C'
+        elif(charRow == 3):
+            return 'D'
+        elif(charRow == 4):
+            return 'E'
+        elif(charRow == 5):
+            return 'F'
+        elif(charRow == 6):
+            return 'G'
+        elif(charRow == 7):
+            return 'H'
+        elif(charRow == 8):
+            return 'I'
         else:
-            return 0
+            return 'A'
