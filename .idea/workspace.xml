@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a977c9c8-a408-4a99-9ed6-73d8bacc246b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TwoDimBoard.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SudokuPuzzle.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SudokuBoard.py" afterPath="$PROJECT_DIR$/SudokuBoard.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TwoDimBoard.py" afterPath="$PROJECT_DIR$/TwoDimBoard.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +14,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TwoDimBoard.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#71#329#1" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwoDimBoard.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TwoDimBoard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+            <state relative-caret-position="422">
+              <caret line="331" column="22" lean-forward="false" selection-start-line="331" selection-start-column="22" selection-end-line="331" selection-end-column="22" />
               <folding>
                 <element signature="e#342#608#0" expanded="false" />
                 <element signature="e#665#1026#0" expanded="false" />
@@ -44,7 +55,7 @@
                 <element signature="e#9980#10137#0" expanded="false" />
                 <element signature="e#10193#10685#0" expanded="false" />
                 <element signature="e#10742#11236#0" expanded="false" />
-                <marker date="1509223653000" expanded="false" signature="5462:5911" ph="..." />
+                <marker date="1509223990000" expanded="false" signature="5462:5911" ph="..." />
               </folding>
             </state>
           </provider>
@@ -86,6 +97,7 @@
         <option value="$PROJECT_DIR$/SudokuPuzzle.py" />
         <option value="$PROJECT_DIR$/SudokuBoard.py" />
         <option value="$PROJECT_DIR$/TwoDimBoard.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
       </list>
     </option>
   </component>
@@ -147,7 +159,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TwoDimBoard">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -206,8 +218,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.TwoDimBoard" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Main" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TwoDimBoard" />
         <item index="2" class="java.lang.String" itemvalue="Python.SudokuBoard" />
       </list>
     </recent_temporary>
@@ -319,7 +331,7 @@
             <element signature="e#9980#10137#0" expanded="false" />
             <element signature="e#10193#10685#0" expanded="false" />
             <element signature="e#10742#11236#0" expanded="false" />
-            <marker date="1509223653000" expanded="false" signature="5462:5911" ph="..." />
+            <marker date="1509223990000" expanded="false" signature="5462:5911" ph="..." />
           </folding>
         </state>
       </provider>
@@ -402,18 +414,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="113" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TwoDimBoard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        <state relative-caret-position="422">
+          <caret line="331" column="22" lean-forward="false" selection-start-line="331" selection-start-column="22" selection-end-line="331" selection-end-column="22" />
           <folding>
             <element signature="e#342#608#0" expanded="false" />
             <element signature="e#665#1026#0" expanded="false" />
@@ -437,7 +441,18 @@
             <element signature="e#9980#10137#0" expanded="false" />
             <element signature="e#10193#10685#0" expanded="false" />
             <element signature="e#10742#11236#0" expanded="false" />
-            <marker date="1509223653000" expanded="false" signature="5462:5911" ph="..." />
+            <marker date="1509223990000" expanded="false" signature="5462:5911" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#71#329#1" expanded="false" />
           </folding>
         </state>
       </provider>
