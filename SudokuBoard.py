@@ -141,12 +141,10 @@ class CSudokuBoard:
             numDict = self.incrementIndexsForOnlyChoice(numDict, self._theBoard[key], key)
 
 
-
-
-
     def onlyChoiceForCol(self, colIndex):
         numDict = {1: None, 2: None, 3: None, 4: None, 5: None, 6: None, 7: None, 8: None, 9: None}
         pass
+
 
 
     def incrementIndexsForOnlyChoice(self, dataDict, values, key):
@@ -161,11 +159,6 @@ class CSudokuBoard:
             dataDict[dictKey] = "X" #Means it can't possibly be an ONLY choice!
 
         return dataDict
-
-
-
-
-
 
 
     def characterForRowNumber(self, charRow):
