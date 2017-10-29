@@ -34,7 +34,7 @@ class C2dBoard:
 
 
     def solveSudoku(self):
-        for bxIdx in range(self._boardDimensions):#range(self._boxOffsetValues):
+        for bxIdx in range(self._boardDimensions):
             for idx in range(self._boardDimensions) :
                 self.clearBox(idx)
 
@@ -164,6 +164,18 @@ class C2dBoard:
             if (cellValue != '.'):
                 self._board[rowIndex][colIndex] = cellValue
 
+    @property
+    def isSolved(self):
+        solvedStat = True
+
+        for rowIdx in range(self._boardDimensions):
+            for colIdx in range(self._boardDimensions):
+                if(len(self._board[rowIdx][colIdx]) > 1):
+                    solvedStat = False
+                    break
+
+        return solvedStat
+
 
     # Think of the cells in the box as a grid of letters
     #
@@ -214,6 +226,48 @@ class C2dBoard:
                         boxCellPt = self.getRelativeBoxOffset(boxID, optIndx)
                         self._board[boxCellPt[0]][boxCellPt[1]] = str(uniqeIdx)
 
+    #Any cell not solved will be a .
+    def boardToString(self):
+        boardStr = ''
+
+        #Row first
+        for rowIdx in range(self._boardDimensions):
+            for colIdx in range(self._boardDimensions):
+                if(len(self._board[rowIdx][colIdx]) == 1):
+                    boardStr += self._board[rowIdx][colIdx]
+                else:
+                    boardStr += '.'
+
+        return boardStr
+
+    def displayBoard(self):
+        cols = '123456789'
+
+        values = self.boardToDictionary
+
+        """
+        Display the values as a 2-D grid.
+        Input: The sudoku in dictionary form
+        Output: None
+        """
+
+        width = 0
+        for rowIndex in range(self._boardDimensions) :
+            for colIndex in range(self._boardDimensions):
+                currWidth = self.optionsRemainingAtCell(rowIndex, colIndex)
+                if(currWidth > width):
+                    width = currWidth
+
+        width += 1
+        line = '+'.join(['-' * (width * 3)] * 3)
+
+        for r in self._rowTitles:
+            print(''.join(values[r + c].center(width) + ('|' if c in '36' else '') for c in cols))
+
+            if r in 'CF':
+                print(line)
+        return
+
 
     def getRelativeBoxOffset(self, boxIdx, cellID):
         point = self.getBoxGrid(boxIdx)
@@ -248,35 +302,6 @@ class C2dBoard:
             colPt = point[colIdx] + 2
 
         return (rowPt, colPt)
-
-
-    def displayBoard(self):
-        cols = '123456789'
-
-        values = self.boardToDictionary
-
-        """
-        Display the values as a 2-D grid.
-        Input: The sudoku in dictionary form
-        Output: None
-        """
-
-        width = 0
-        for rowIndex in range(self._boardDimensions) :
-            for colIndex in range(self._boardDimensions):
-                currWidth = self.optionsRemainingAtCell(rowIndex, colIndex)
-                if(currWidth > width):
-                    width = currWidth
-
-        width += 1
-        line = '+'.join(['-' * (width * 3)] * 3)
-
-        for r in self._rowTitles:
-            print(''.join(values[r + c].center(width) + ('|' if c in '36' else '') for c in cols))
-
-            if r in 'CF':
-                print(line)
-        return
 
 
     def optionsRemainingAtCell(self, row, col):
