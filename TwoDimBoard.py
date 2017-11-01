@@ -1,9 +1,10 @@
 import math
-
+import copy
 
 class C2dBoard:
     _board = []
 
+    _depthSearchIdx = 0
     _boardDimensions = 9  # Gives us the NxN board
     _boxOffsetValues = 0  # Used to get the nxn box
     _solvedPoints = _boardDimensions ** 2  # This is how many values must be on the board to be solved.
@@ -60,6 +61,25 @@ class C2dBoard:
 
             if (self.isSolved == True):
                 return
+
+        if self.isSolved == True:
+            return
+
+        #--TEST
+        self.displayBoard()
+        print("\n****************\n")
+        #--END TEST
+
+        sortedCellsArray = self.sortCellsForDepthFirst()
+        self.performReplacementForDepthFirst(sortedCellsArray, self._depthSearchIdx)
+
+        #--TEST
+        print(len(sortedCellsArray))
+        print(sortedCellsArray)
+        print("\n****************\n")
+        #self.performReplacementForDepthFirst()
+        #--END TEST
+
 
 
     # getBoxGrid:
@@ -425,3 +445,96 @@ class C2dBoard:
             return 'I'
         else:
             return 'A'
+
+    #Depth-first code
+
+    def sortCellsForDepthFirst(self):
+        cellToGuess = []
+
+        for rowIdx in range(self._boardDimensions):
+            for colIdx in range(self._boardDimensions):
+
+                cellInfo = self._board[rowIdx][colIdx]
+                lenOfCellData = len(cellInfo)
+                cellIdx = (rowIdx, colIdx, cellInfo)
+
+                if lenOfCellData == 1:
+                    continue #Any cell with a single option is solved
+                elif lenOfCellData == 2:
+                    cellToGuess.insert(0, cellIdx) #Any cell with two options automatically is the shortest possible
+                    continue
+                elif len(cellToGuess) == 0:
+                    cellToGuess.append(cellIdx)
+                    continue
+
+                wasInserted = False
+                for idx in range(len(cellToGuess)):
+                    point = cellToGuess[idx]
+
+                    cellRow = point[0]
+                    cellCol = point[1]
+
+                    if(len(self._board[cellRow][cellCol]) < lenOfCellData):
+                        continue;
+                    else:
+                        wasInserted = True
+                        cellToGuess.insert(idx, cellIdx)
+                        break
+
+                if wasInserted == False:
+                    cellToGuess.append(cellIdx)
+
+
+        return cellToGuess
+
+    #Param: replacmentIndices - This is the array indice of 0 - N when N is the
+    #      number of tuples in the options array. The reason this is like this
+    #      is because we'll need two indicies. 1 for the tuple's index in the
+    #      array and another for the testing value. ie: If we're testing replacing
+    #      a cell [at array indice 12] which has the value "2478" and we want to
+    #      test if replacing the cell with 7 will work, we'll need separate indexs of:
+    #      12 and 2. 12 for the array and 2 for the string's character index.
+    def performReplacementForDepthFirst(self, arrOptions, arrayTupleIndice):
+        if(arrayTupleIndice >= len(arrOptions)):
+            return
+
+        tmpBoard = self._board #Just for easier referencing
+
+        tpl = arrOptions[arrayTupleIndice]
+
+
+
+        self._depthSearchIdx += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
