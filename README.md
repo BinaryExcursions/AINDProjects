@@ -1,2 +1,0 @@
-# AINDProjects
-For AI learning
